@@ -1,5 +1,7 @@
 package com.julespi.clientesserviciosbancarios.service.impl;
 
+import com.julespi.clientesserviciosbancarios.BbvaBusinessException;
+import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.dto.ClienteDto;
 import com.julespi.clientesserviciosbancarios.mapper.ClienteMapper;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
@@ -21,7 +23,10 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    public ClienteDto crearCliente(ClienteDto clienteDto) {
+    public ClienteDto crearCliente(ClienteDto clienteDto) throws BbvaBusinessException {
+        if(repository.existsByDni(clienteDto.getDni())){
+            throw new BbvaBusinessException();
+        }
         return mapper.toClienteDto(repository.save(mapper.toCliente(clienteDto)));
     }
 

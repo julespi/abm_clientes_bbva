@@ -10,5 +10,5 @@ public interface IServicioBancarioService {
 
     List<ServicioBancario> listarServiciosBancarios();
 
-    void registrarUsuario(Long idServicio, Long idUsuario) throws BbvaNotFoundException;
+    void registrarUsuario(Long idServicio, Integer dniUsuario) throws BbvaNotFoundException;
 }

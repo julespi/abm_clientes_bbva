@@ -16,6 +16,9 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //TODO ver esto
     private Long id;
 
+    @Column(name = "dni", nullable = false, unique = true)
+    private Integer dni;
+
     @Column(name = "nombre", nullable = false)
     private String nombre;
 

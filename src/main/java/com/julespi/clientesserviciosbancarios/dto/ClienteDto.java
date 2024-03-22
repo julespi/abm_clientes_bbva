@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Set;
 
 @Getter
@@ -13,6 +15,10 @@ import java.util.Set;
 public class ClienteDto {
 
     private Long id;
+
+    @NotNull
+    @Positive
+    private Integer dni;
 
     @NotBlank
     private String nombre;
@@ -32,5 +38,5 @@ public class ClienteDto {
 
     private TipoCliente tipoCliente;
 
-    private Set<ServicioBancario> serviciosBancarios;
+    //private Set<ServicioBancario> serviciosBancarios;
 }

@@ -1,5 +1,6 @@
 package com.julespi.clientesserviciosbancarios.service;
 
+import com.julespi.clientesserviciosbancarios.BbvaBusinessException;
 import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.dto.ClienteDto;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
@@ -7,7 +8,7 @@ import com.julespi.clientesserviciosbancarios.model.Cliente;
 import java.util.List;
 
 public interface IClienteService {
-    ClienteDto crearCliente(ClienteDto clienteDto);
+    ClienteDto crearCliente(ClienteDto clienteDto) throws BbvaBusinessException;
 
     List<ClienteDto> listarClientes();
 }

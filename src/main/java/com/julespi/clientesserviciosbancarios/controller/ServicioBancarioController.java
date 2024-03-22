@@ -30,9 +30,9 @@ public class ServicioBancarioController {
         return ResponseEntity.ok(service.listarServiciosBancarios());
     }
 
-    @PostMapping(value = "/{idServicio}/usuarios/{idUsuario}")
-    public ResponseEntity<Void> registrarUsuario(@PathVariable Long idServicio, @PathVariable Long idUsuario) throws BbvaNotFoundException {
-        service.registrarUsuario(idServicio, idUsuario);
+    @PostMapping(value = "/{idServicio}/usuarios/{dniCliente}")
+    public ResponseEntity<Void> registrarUsuario(@PathVariable Long idServicio, @PathVariable Integer dniCliente) throws BbvaNotFoundException {
+        service.registrarUsuario(idServicio, dniCliente);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

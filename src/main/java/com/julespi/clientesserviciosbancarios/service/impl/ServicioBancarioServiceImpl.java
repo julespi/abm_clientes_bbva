@@ -32,9 +32,9 @@ public class ServicioBancarioServiceImpl implements IServicioBancarioService {
     }
 
     @Override
-    public void registrarUsuario(Long idServicio, Long idUsuario) throws BbvaNotFoundException {
+    public void registrarUsuario(Long idServicio, Integer dniCliente) throws BbvaNotFoundException {
         ServicioBancario servicio = repository.findById(idServicio).orElseThrow(BbvaNotFoundException::new); //TODO agregar mensaje
-        Cliente cliente = clienteRepository.findById(idServicio).orElseThrow(BbvaNotFoundException::new); //TODO agregar mensaje
+        Cliente cliente = clienteRepository.findByDni(dniCliente).orElseThrow(BbvaNotFoundException::new); //TODO agregar mensaje
         servicio.getClientes().add(cliente);
         repository.save(servicio);
     }
