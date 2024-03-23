@@ -1,6 +1,7 @@
 package com.julespi.clientesserviciosbancarios.service.impl;
 
 import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
+import com.julespi.clientesserviciosbancarios.mapper.ServicioBancarioMapper;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
 import com.julespi.clientesserviciosbancarios.model.ServicioBancario;
 import com.julespi.clientesserviciosbancarios.repository.IClienteRepository;
@@ -8,27 +9,17 @@ import com.julespi.clientesserviciosbancarios.repository.IServicioBancarioReposi
 import com.julespi.clientesserviciosbancarios.service.IServicioBancarioService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ServicioBancarioServiceImpl implements IServicioBancarioService {
 
     private final IServicioBancarioRepository repository;
     private final IClienteRepository clienteRepository;
+    private final ServicioBancarioMapper mapper;
 
-    public ServicioBancarioServiceImpl(IServicioBancarioRepository repository, IClienteRepository clienteRepository) {
+    public ServicioBancarioServiceImpl(IServicioBancarioRepository repository, IClienteRepository clienteRepository, ServicioBancarioMapper mapper) {
         this.repository = repository;
         this.clienteRepository = clienteRepository;
-    }
-
-    @Override
-    public ServicioBancario crearServicio(ServicioBancario servicioBancario) {
-        return repository.save(servicioBancario);
-    }
-
-    @Override
-    public List<ServicioBancario> listarServiciosBancarios() {
-        return repository.findAll();
+        this.mapper = mapper;
     }
 
     @Override

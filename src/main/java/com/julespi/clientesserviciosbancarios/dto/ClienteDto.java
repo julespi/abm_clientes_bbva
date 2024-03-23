@@ -14,8 +14,6 @@ import java.util.Set;
 @Setter
 public class ClienteDto {
 
-    private Long id;
-
     @NotNull
     @Positive
     private Integer dni;
@@ -38,5 +36,5 @@ public class ClienteDto {
 
     private TipoCliente tipoCliente;
 
-    //private Set<ServicioBancario> serviciosBancarios;
+    private Set<String> serviciosBancarios;
 }

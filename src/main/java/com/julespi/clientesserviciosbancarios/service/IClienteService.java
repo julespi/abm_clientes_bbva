@@ -3,12 +3,15 @@ package com.julespi.clientesserviciosbancarios.service;
 import com.julespi.clientesserviciosbancarios.BbvaBusinessException;
 import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.dto.ClienteDto;
-import com.julespi.clientesserviciosbancarios.model.Cliente;
+import org.springframework.lang.Nullable;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IClienteService {
     ClienteDto crearCliente(ClienteDto clienteDto) throws BbvaBusinessException;
 
-    List<ClienteDto> listarClientes();
+    List<ClienteDto> listarClientes(@Nullable String servicioBancario);
+
+    ClienteDto editarCliente(Integer dniCliente, Map<String, Object> body) throws BbvaNotFoundException, BbvaBusinessException;
 }

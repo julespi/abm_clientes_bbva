@@ -12,8 +12,11 @@ import java.util.Set;
 public class ServicioBancario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //TODO ver esto
-    private Long id; //TODO este id debiera de estar oculto y tener otro atributo unico como id externo
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "codigo", nullable = false, unique = true, length = 4)
+    private String codigo;
 
     @Column(name = "nombre")
     private String nombre;

@@ -13,7 +13,8 @@ import java.util.Set;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //TODO ver esto
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "dni", nullable = false, unique = true)
