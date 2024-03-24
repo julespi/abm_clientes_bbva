@@ -1,0 +1,399 @@
+{
+	"info": {
+		"_postman_id": "8b4bd921-c921-4e56-b059-8b797c01d3b0",
+		"name": "bbva",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26955594"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "alta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 30000123,\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Garcia\",\r\n    \"calle\": \"Alsina\",\r\n    \"numero\": 2258,\r\n    \"codigoPostal\": 1234,\r\n    \"telefono\": null,\r\n    \"celular\": \"11 45645645\",\r\n    \"tipoCliente\": \"PARTICULAR\",\r\n    \"serviciosBancarios\": [\r\n        \"PZOF\",\r\n        \"CHEQ\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/clientes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dni\": 30000123,\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Garcia\",\r\n    \"calle\": \"Alsina\",\r\n    \"numero\": 2258,\r\n    \"codigoPostal\": 1234,\r\n    \"telefono\": null,\r\n    \"celular\": \"11 45645645\",\r\n    \"tipoCliente\": \"PARTICULAR\",\r\n    \"serviciosBancarios\": [\r\n        \"PZOF\",\r\n        \"CHEQ\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/clientes/",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 19:58:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"dni\": 30000123,\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Garcia\",\n    \"calle\": \"Alsina\",\n    \"numero\": 2258,\n    \"codigoPostal\": 1234,\n    \"telefono\": null,\n    \"celular\": \"11 45645645\",\n    \"tipoCliente\": \"PARTICULAR\",\n    \"serviciosBancarios\": [\n        \"PZOF\",\n        \"CHEQ\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "modif",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"celular\": \"15 9999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/clientes/30123123",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"30123123"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"celular\": \"15 9999\",\r\n    \"numero\": 321\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/clientes/30123123",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										"30123123"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 19:58:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"dni\": 30123123,\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Garcia\",\n    \"calle\": \"9 de Julio\",\n    \"numero\": 321,\n    \"codigoPostal\": 1100,\n    \"telefono\": \"11 12312312\",\n    \"celular\": \"15 9999\",\n    \"tipoCliente\": \"PARTICULAR\",\n    \"serviciosBancarios\": [\n        \"TECH\",\n        \"PZOF\",\n        \"CHEQ\"\n    ]\n}"
+						},
+						{
+							"name": "409",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"celular\": \"15 9999\",\r\n    \"numero\": 321,\r\n    \"dni\":123123\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/clientes/30123123",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										"30123123"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 19:59:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2024-03-24T19:59:34.690+00:00\",\n    \"status\": \"CONFLICT\",\n    \"error\": \"El atributo 'dni' no puede ser modificado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/clientes/?servicio-bancario=PZOF",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								""
+							],
+							"query": [
+								{
+									"key": "servicio-bancario",
+									"value": "PZOF"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "todos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/clientes/",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										""
+									],
+									"query": [
+										{
+											"key": "servicio-bancario",
+											"value": "PZOF",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 19:59:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"dni\": 30123123,\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Garcia\",\n        \"calle\": \"9 de Julio\",\n        \"numero\": 321,\n        \"codigoPostal\": 1100,\n        \"telefono\": \"11 12312312\",\n        \"celular\": \"15 9999\",\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"TECH\",\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 27894567,\n        \"nombre\": \"María\",\n        \"apellido\": \"Pérez\",\n        \"calle\": \"Mitre\",\n        \"numero\": 456,\n        \"codigoPostal\": 1234,\n        \"telefono\": null,\n        \"celular\": \"11 45645645\",\n        \"tipoCliente\": \"EMPRESA\",\n        \"serviciosBancarios\": [\n            \"PZOF\"\n        ]\n    },\n    {\n        \"dni\": 33456789,\n        \"nombre\": \"Pedro\",\n        \"apellido\": \"López\",\n        \"calle\": \"Corrientes\",\n        \"numero\": 789,\n        \"codigoPostal\": 1414,\n        \"telefono\": \"11 78978978\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"PRES\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 20345678,\n        \"nombre\": \"Ana\",\n        \"apellido\": \"Fernández\",\n        \"calle\": \"Sarmiento\",\n        \"numero\": 345,\n        \"codigoPostal\": 1642,\n        \"telefono\": \"11 34534534\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": []\n    },\n    {\n        \"dni\": 31234567,\n        \"nombre\": \"Diego\",\n        \"apellido\": \"Martínez\",\n        \"calle\": \"Belgrano\",\n        \"numero\": 234,\n        \"codigoPostal\": 1870,\n        \"telefono\": null,\n        \"celular\": \"11 23423423\",\n        \"tipoCliente\": \"EMPRESA\",\n        \"serviciosBancarios\": []\n    },\n    {\n        \"dni\": 29876543,\n        \"nombre\": \"Laura\",\n        \"apellido\": \"Gómez\",\n        \"calle\": \"Independencia\",\n        \"numero\": 567,\n        \"codigoPostal\": 2000,\n        \"telefono\": \"11 56756756\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"PRES\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 32145678,\n        \"nombre\": \"Eduardo\",\n        \"apellido\": \"Rodríguez\",\n        \"calle\": \"Rivadavia\",\n        \"numero\": 890,\n        \"codigoPostal\": 2121,\n        \"telefono\": null,\n        \"celular\": \"11 89089089\",\n        \"tipoCliente\": \"EMPRESA\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 28765432,\n        \"nombre\": \"Sofía\",\n        \"apellido\": \"Díaz\",\n        \"calle\": \"San Martín\",\n        \"numero\": 123,\n        \"codigoPostal\": 2232,\n        \"telefono\": \"11 12312312\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\"\n        ]\n    },\n    {\n        \"dni\": 12322313,\n        \"nombre\": \"Asd\",\n        \"apellido\": \"Graciela\",\n        \"calle\": null,\n        \"numero\": null,\n        \"codigoPostal\": null,\n        \"telefono\": null,\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 30000123,\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Garcia\",\n        \"calle\": \"Alsina\",\n        \"numero\": 2258,\n        \"codigoPostal\": 1234,\n        \"telefono\": null,\n        \"celular\": \"11 45645645\",\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    }\n]"
+						},
+						{
+							"name": "por pzo fijo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/clientes/?servicio-bancario=PZOF",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										""
+									],
+									"query": [
+										{
+											"key": "servicio-bancario",
+											"value": "PZOF"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 20:00:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"dni\": 30123123,\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Garcia\",\n        \"calle\": \"9 de Julio\",\n        \"numero\": 321,\n        \"codigoPostal\": 1100,\n        \"telefono\": \"11 12312312\",\n        \"celular\": \"15 9999\",\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"TECH\",\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 27894567,\n        \"nombre\": \"María\",\n        \"apellido\": \"Pérez\",\n        \"calle\": \"Mitre\",\n        \"numero\": 456,\n        \"codigoPostal\": 1234,\n        \"telefono\": null,\n        \"celular\": \"11 45645645\",\n        \"tipoCliente\": \"EMPRESA\",\n        \"serviciosBancarios\": [\n            \"PZOF\"\n        ]\n    },\n    {\n        \"dni\": 33456789,\n        \"nombre\": \"Pedro\",\n        \"apellido\": \"López\",\n        \"calle\": \"Corrientes\",\n        \"numero\": 789,\n        \"codigoPostal\": 1414,\n        \"telefono\": \"11 78978978\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"PRES\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 29876543,\n        \"nombre\": \"Laura\",\n        \"apellido\": \"Gómez\",\n        \"calle\": \"Independencia\",\n        \"numero\": 567,\n        \"codigoPostal\": 2000,\n        \"telefono\": \"11 56756756\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"PRES\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 32145678,\n        \"nombre\": \"Eduardo\",\n        \"apellido\": \"Rodríguez\",\n        \"calle\": \"Rivadavia\",\n        \"numero\": 890,\n        \"codigoPostal\": 2121,\n        \"telefono\": null,\n        \"celular\": \"11 89089089\",\n        \"tipoCliente\": \"EMPRESA\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 28765432,\n        \"nombre\": \"Sofía\",\n        \"apellido\": \"Díaz\",\n        \"calle\": \"San Martín\",\n        \"numero\": 123,\n        \"codigoPostal\": 2232,\n        \"telefono\": \"11 12312312\",\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\"\n        ]\n    },\n    {\n        \"dni\": 12322313,\n        \"nombre\": \"Asd\",\n        \"apellido\": \"Graciela\",\n        \"calle\": null,\n        \"numero\": null,\n        \"codigoPostal\": null,\n        \"telefono\": null,\n        \"celular\": null,\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    },\n    {\n        \"dni\": 30000123,\n        \"nombre\": \"Juan\",\n        \"apellido\": \"Garcia\",\n        \"calle\": \"Alsina\",\n        \"numero\": 2258,\n        \"codigoPostal\": 1234,\n        \"telefono\": null,\n        \"celular\": \"11 45645645\",\n        \"tipoCliente\": \"PARTICULAR\",\n        \"serviciosBancarios\": [\n            \"PZOF\",\n            \"CHEQ\"\n        ]\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "servicios",
+			"item": [
+				{
+					"name": "registrar cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/servicios-bancarios/PZOF/usuarios/27894567",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servicios-bancarios",
+								"PZOF",
+								"usuarios",
+								"27894567"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
