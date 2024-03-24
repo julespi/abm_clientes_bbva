@@ -33,8 +33,8 @@ public class ClienteController {
 
     @Operation(summary = "Obtiene el listado de clientes")
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ClienteDto>> listarClientes(@RequestParam(name = "servicio-bancario", required = false) String servicioBancario){
-        return ResponseEntity.ok(service.listarClientes(servicioBancario));
+    public ResponseEntity<List<ClienteDto>> listarClientes(@RequestParam(name = "servicio-bancario", required = false) String codServicioBancario){
+        return ResponseEntity.ok(service.listarClientes(codServicioBancario));
     }
 
     @Operation(summary = "Edita el/los atributos de un cliente determinado")

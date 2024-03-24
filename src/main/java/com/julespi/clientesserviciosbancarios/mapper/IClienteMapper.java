@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring", uses = {ServicioBancarioMapper.class})
-public interface ClienteMapper {
+@Mapper(componentModel = "spring", uses = {IServicioBancarioMapper.class})
+public interface IClienteMapper {
 
-    ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
+    IClienteMapper INSTANCE = Mappers.getMapper(IClienteMapper.class);
 
     @Mapping(target = "serviciosBancarios", qualifiedByName = "toSetCodigos")
     ClienteDto toClienteDto(Cliente cliente);

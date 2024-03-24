@@ -10,14 +10,13 @@ import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
-public interface ServicioBancarioMapper {
+public interface IServicioBancarioMapper {
 
-    ServicioBancarioMapper INSTANCE = Mappers.getMapper(ServicioBancarioMapper.class);
+    IServicioBancarioMapper INSTANCE = Mappers.getMapper(IServicioBancarioMapper.class);
 
     @Mapping(target = "clientes", qualifiedByName = "toSetDnis")
     ServicioBancarioDto toServicioBancarioDto(ServicioBancario servicioBancario);

@@ -3,7 +3,7 @@ package com.julespi.clientesserviciosbancarios.service.impl;
 import com.julespi.clientesserviciosbancarios.BbvaBusinessException;
 import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.dto.ClienteDto;
-import com.julespi.clientesserviciosbancarios.mapper.ClienteMapper;
+import com.julespi.clientesserviciosbancarios.mapper.IClienteMapper;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
 import com.julespi.clientesserviciosbancarios.repository.IClienteRepository;
 import com.julespi.clientesserviciosbancarios.service.IClienteService;
@@ -21,10 +21,10 @@ import java.util.Map;
 public class ClienteServiceImpl implements IClienteService {
 
     private final IClienteRepository repository;
-    private final ClienteMapper mapper;
+    private final IClienteMapper mapper;
     private static final List<String> READ_ONLY_ATTRS = Arrays.asList("id", "dni", "serviciosBancarios");
 
-    public ClienteServiceImpl(IClienteRepository repository, ClienteMapper mapper) {
+    public ClienteServiceImpl(IClienteRepository repository, IClienteMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -38,11 +38,11 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    public List<ClienteDto> listarClientes(@Nullable String servicioBancario) {
-        if(servicioBancario == null){
+    public List<ClienteDto> listarClientes(@Nullable String codServicioBancario) {
+        if(codServicioBancario == null){
             return mapper.toClienteListDto(repository.findAll());
         }else{
-            return mapper.toClienteListDto(repository.findByServiciosBancarios_Codigo(servicioBancario));
+            return mapper.toClienteListDto(repository.findByServiciosBancarios_Codigo(codServicioBancario));
         }
     }
 

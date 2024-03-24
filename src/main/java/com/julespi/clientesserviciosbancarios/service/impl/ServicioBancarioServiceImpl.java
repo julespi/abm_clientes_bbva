@@ -1,7 +1,7 @@
 package com.julespi.clientesserviciosbancarios.service.impl;
 
 import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
-import com.julespi.clientesserviciosbancarios.mapper.ServicioBancarioMapper;
+import com.julespi.clientesserviciosbancarios.mapper.IServicioBancarioMapper;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
 import com.julespi.clientesserviciosbancarios.model.ServicioBancario;
 import com.julespi.clientesserviciosbancarios.repository.IClienteRepository;
@@ -14,9 +14,9 @@ public class ServicioBancarioServiceImpl implements IServicioBancarioService {
 
     private final IServicioBancarioRepository repository;
     private final IClienteRepository clienteRepository;
-    private final ServicioBancarioMapper mapper;
+    private final IServicioBancarioMapper mapper;
 
-    public ServicioBancarioServiceImpl(IServicioBancarioRepository repository, IClienteRepository clienteRepository, ServicioBancarioMapper mapper) {
+    public ServicioBancarioServiceImpl(IServicioBancarioRepository repository, IClienteRepository clienteRepository, IServicioBancarioMapper mapper) {
         this.repository = repository;
         this.clienteRepository = clienteRepository;
         this.mapper = mapper;

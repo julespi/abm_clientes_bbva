@@ -11,7 +11,7 @@ import java.util.Map;
 public interface IClienteService {
     ClienteDto crearCliente(ClienteDto clienteDto) throws BbvaBusinessException;
 
-    List<ClienteDto> listarClientes(@Nullable String servicioBancario);
+    List<ClienteDto> listarClientes(@Nullable String codServicioBancario);
 
     ClienteDto editarCliente(Integer dniCliente, Map<String, Object> body) throws BbvaNotFoundException, BbvaBusinessException;
 }
