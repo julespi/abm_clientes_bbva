@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -35,5 +36,6 @@ public class ServicioBancario {
     @JoinTable(name = "clientes_servicios_bancarios",
             joinColumns = @JoinColumn(name = "servicio_bancario_id"),
             inverseJoinColumns = @JoinColumn(name = "cliente_id"))
-    private Set<Cliente> clientes;
+    private Set<Cliente> clientes = new HashSet<>();
+
 }

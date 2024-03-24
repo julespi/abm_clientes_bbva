@@ -1,7 +1,7 @@
 package com.julespi.clientesserviciosbancarios.controller;
 
-import com.julespi.clientesserviciosbancarios.BbvaBusinessException;
-import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
+import com.julespi.clientesserviciosbancarios.exception.BbvaBusinessException;
+import com.julespi.clientesserviciosbancarios.exception.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.dto.ClienteDto;
 import com.julespi.clientesserviciosbancarios.service.IClienteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,9 +25,8 @@ public class ClienteController {
     }
 
     @Operation(summary = "Crea un cliente nuevo")
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClienteDto> crearCliente(
-            @Valid @RequestBody ClienteDto clienteDto) throws BbvaBusinessException { //TODO ver que devolver
+    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClienteDto> crearCliente(@Valid @RequestBody ClienteDto clienteDto) throws BbvaBusinessException, BbvaNotFoundException {
         return new ResponseEntity<>(service.crearCliente(clienteDto), HttpStatus.CREATED);
     }
 
@@ -38,7 +37,7 @@ public class ClienteController {
     }
 
     @Operation(summary = "Edita el/los atributos de un cliente determinado")
-    @PatchMapping(value = "/{dniCliente}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{dniCliente}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClienteDto> editarCliente(@PathVariable Integer dniCliente, @RequestBody Map<String, Object> body) throws BbvaBusinessException, BbvaNotFoundException {
         return new ResponseEntity<>(service.editarCliente(dniCliente, body),HttpStatus.OK);
     }

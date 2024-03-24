@@ -1,6 +1,5 @@
 package com.julespi.clientesserviciosbancarios.dto;
 
-import com.julespi.clientesserviciosbancarios.model.ServicioBancario;
 import com.julespi.clientesserviciosbancarios.model.TipoCliente;
 import lombok.Getter;
 import lombok.Setter;

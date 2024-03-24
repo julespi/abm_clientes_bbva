@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring", uses = {IServicioBancarioMapper.class})
+@Mapper(componentModel = "spring")
 public interface IClienteMapper {
 
     IClienteMapper INSTANCE = Mappers.getMapper(IClienteMapper.class);

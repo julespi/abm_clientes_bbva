@@ -1,40 +1,48 @@
 package com.julespi.clientesserviciosbancarios.service.impl;
 
-import com.julespi.clientesserviciosbancarios.BbvaBusinessException;
-import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
+import com.julespi.clientesserviciosbancarios.exception.BbvaBusinessException;
+import com.julespi.clientesserviciosbancarios.exception.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.dto.ClienteDto;
 import com.julespi.clientesserviciosbancarios.mapper.IClienteMapper;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
+import com.julespi.clientesserviciosbancarios.model.ServicioBancario;
 import com.julespi.clientesserviciosbancarios.repository.IClienteRepository;
+import com.julespi.clientesserviciosbancarios.repository.IServicioBancarioRepository;
 import com.julespi.clientesserviciosbancarios.service.IClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Service
 public class ClienteServiceImpl implements IClienteService {
 
     private final IClienteRepository repository;
+    private final IServicioBancarioRepository servicioBancarioRepository;
     private final IClienteMapper mapper;
     private static final List<String> READ_ONLY_ATTRS = Arrays.asList("id", "dni", "serviciosBancarios");
 
-    public ClienteServiceImpl(IClienteRepository repository, IClienteMapper mapper) {
+    public ClienteServiceImpl(IClienteRepository repository, IServicioBancarioRepository servicioBancarioRepository, IClienteMapper mapper) {
         this.repository = repository;
+        this.servicioBancarioRepository = servicioBancarioRepository;
         this.mapper = mapper;
     }
 
     @Override
-    public ClienteDto crearCliente(ClienteDto clienteDto) throws BbvaBusinessException {
+    public ClienteDto crearCliente(ClienteDto clienteDto) throws BbvaBusinessException, BbvaNotFoundException {
         if(repository.existsByDni(clienteDto.getDni())){
             throw new BbvaBusinessException("Ya existe un cliente con el dni '" + clienteDto.getDni() + "'");
         }
-        return mapper.toClienteDto(repository.save(mapper.toCliente(clienteDto)));
+        Cliente tempCliente = mapper.toCliente(clienteDto);
+        for(String codServ:clienteDto.getServiciosBancarios()){
+            ServicioBancario serv = servicioBancarioRepository.findByCodigo(codServ)
+                    .orElseThrow(() -> new BbvaNotFoundException("Servicio '" + codServ + "' no valido"));
+            tempCliente.addServicioBancario(serv);
+        }
+        return mapper.toClienteDto(repository.save(tempCliente));
     }
 
     @Override
@@ -48,7 +56,8 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Override
     public ClienteDto editarCliente(Integer dniCliente, Map<String, Object> body) throws BbvaNotFoundException, BbvaBusinessException {
-        Cliente cliente = repository.findByDni(dniCliente).orElseThrow(BbvaNotFoundException::new);
+        Cliente cliente = repository.findByDni(dniCliente)
+                .orElseThrow(() -> new BbvaNotFoundException("Cliente con dni '" + dniCliente + "' inexistente"));
 
         for (Map.Entry<String, Object> entry : body.entrySet()) {
             String nombreAttr = entry.getKey();

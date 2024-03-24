@@ -1,7 +1,6 @@
 package com.julespi.clientesserviciosbancarios.service.impl;
 
-import com.julespi.clientesserviciosbancarios.BbvaNotFoundException;
-import com.julespi.clientesserviciosbancarios.mapper.IServicioBancarioMapper;
+import com.julespi.clientesserviciosbancarios.exception.BbvaNotFoundException;
 import com.julespi.clientesserviciosbancarios.model.Cliente;
 import com.julespi.clientesserviciosbancarios.model.ServicioBancario;
 import com.julespi.clientesserviciosbancarios.repository.IClienteRepository;
@@ -14,18 +13,18 @@ public class ServicioBancarioServiceImpl implements IServicioBancarioService {
 
     private final IServicioBancarioRepository repository;
     private final IClienteRepository clienteRepository;
-    private final IServicioBancarioMapper mapper;
 
-    public ServicioBancarioServiceImpl(IServicioBancarioRepository repository, IClienteRepository clienteRepository, IServicioBancarioMapper mapper) {
+    public ServicioBancarioServiceImpl(IServicioBancarioRepository repository, IClienteRepository clienteRepository) {
         this.repository = repository;
         this.clienteRepository = clienteRepository;
-        this.mapper = mapper;
     }
 
     @Override
-    public void registrarUsuario(Long idServicio, Integer dniCliente) throws BbvaNotFoundException {
-        ServicioBancario servicio = repository.findById(idServicio).orElseThrow(BbvaNotFoundException::new); //TODO agregar mensaje
-        Cliente cliente = clienteRepository.findByDni(dniCliente).orElseThrow(BbvaNotFoundException::new); //TODO agregar mensaje
+    public void registrarUsuario(String codServicioBancario, Integer dniCliente) throws BbvaNotFoundException {
+        ServicioBancario servicio = repository.findByCodigo(codServicioBancario)
+                .orElseThrow(() -> new BbvaNotFoundException("Servicio '" + codServicioBancario + "' no valido"));
+        Cliente cliente = clienteRepository.findByDni(dniCliente)
+                .orElseThrow(() -> new BbvaNotFoundException("Cliente con dni '" + dniCliente + "' inexistente"));
         servicio.getClientes().add(cliente);
         repository.save(servicio);
     }

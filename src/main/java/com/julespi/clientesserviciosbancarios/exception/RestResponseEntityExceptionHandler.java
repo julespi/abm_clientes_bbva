@@ -1,6 +1,5 @@
-package com.julespi.clientesserviciosbancarios;
+package com.julespi.clientesserviciosbancarios.exception;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,7 +16,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(value = BbvaBusinessException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    protected ResponseEntity<Object> BbvaBusinessException(BbvaBusinessException ex){
+    protected ResponseEntity<Object> bbvaBusinessException(BbvaBusinessException ex){
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", new Date());
         body.put("status", HttpStatus.CONFLICT);
@@ -28,7 +27,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(value = BbvaNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    protected ResponseEntity<Object> BbvaNotFoundExceptionException(BbvaNotFoundException ex){
+    protected ResponseEntity<Object> bbvaNotFoundExceptionException(BbvaNotFoundException ex){
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", new Date());
         body.put("status", HttpStatus.NOT_FOUND);
